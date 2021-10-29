@@ -1,0 +1,27 @@
+[2021-10-29 18:43:12,762] {taskinstance.py:1035} INFO - Dependencies all met for <TaskInstance: airflow_slack_example.test scheduled__2021-10-29T02:49:00+00:00 [queued]>
+[2021-10-29 18:43:12,781] {taskinstance.py:1035} INFO - Dependencies all met for <TaskInstance: airflow_slack_example.test scheduled__2021-10-29T02:49:00+00:00 [queued]>
+[2021-10-29 18:43:12,781] {taskinstance.py:1241} INFO - 
+--------------------------------------------------------------------------------
+[2021-10-29 18:43:12,781] {taskinstance.py:1242} INFO - Starting attempt 1 of 1
+[2021-10-29 18:43:12,782] {taskinstance.py:1243} INFO - 
+--------------------------------------------------------------------------------
+[2021-10-29 18:43:12,794] {taskinstance.py:1262} INFO - Executing <Task(BashOperator): test> on 2021-10-29 02:49:00+00:00
+[2021-10-29 18:43:12,800] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', '***_slack_example', 'test', 'scheduled__2021-10-29T02:49:00+00:00', '--job-id', '280', '--raw', '--subdir', 'DAGS_FOLDER/example_bash.py', '--cfg-path', '/tmp/tmp3il8r6lr', '--error-file', '/tmp/tmp8a71_2qp']
+[2021-10-29 18:43:12,801] {standard_task_runner.py:77} INFO - Job 280: Subtask test
+[2021-10-29 18:43:12,797] {standard_task_runner.py:52} INFO - Started process 836 to run task
+[2021-10-29 18:43:12,837] {logging_mixin.py:109} INFO - Running <TaskInstance: ***_slack_example.test scheduled__2021-10-29T02:49:00+00:00 [running]> on host 85d7243ef68d
+[2021-10-29 18:43:12,901] {taskinstance.py:1414} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=***_slack_example
+AIRFLOW_CTX_TASK_ID=test
+AIRFLOW_CTX_EXECUTION_DATE=2021-10-29T02:49:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-10-29T02:49:00+00:00
+[2021-10-29 18:43:12,902] {subprocess.py:62} INFO - Tmp dir root location: 
+ /tmp
+[2021-10-29 18:43:12,903] {subprocess.py:74} INFO - Running command: ['bash', '-c', 'echo "one minute test"']
+[2021-10-29 18:43:12,918] {subprocess.py:85} INFO - Output:
+[2021-10-29 18:43:12,920] {subprocess.py:89} INFO - one minute test
+[2021-10-29 18:43:12,920] {subprocess.py:93} INFO - Command exited with return code 0
+[2021-10-29 18:43:12,961] {taskinstance.py:1280} INFO - Marking task as SUCCESS. dag_id=***_slack_example, task_id=test, execution_date=20211029T024900, start_date=20211029T184312, end_date=20211029T184312
+[2021-10-29 18:43:13,015] {local_task_job.py:154} INFO - Task exited with return code 0
+[2021-10-29 18:43:13,051] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check
