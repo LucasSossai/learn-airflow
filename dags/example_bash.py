@@ -12,13 +12,13 @@ default_args = {
 }
 
 with DAG(
-    "tutorial",
+    "dag_example_bash",
     default_args=default_args,
     description="A simple tutorial DAG",
     schedule_interval=timedelta(days=1),
-    start_date=datetime(2021, 1, 1),
+    start_date=datetime(2021, 11, 1),
     catchup=False,
-    tags=["example"],
+    tags=["example_tag"],
 ) as dag:
     t1 = BashOperator(
         task_id="print_date",
