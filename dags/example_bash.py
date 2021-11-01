@@ -1,30 +1,35 @@
-from datetime import datetime
-
+from datetime import datetime, timedelta
+from textwrap import dedent
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
+
+from airflow.operators.bash import BashOperator
 
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
 }
 
-dag = DAG(
-    dag_id="example_bash",
-    start_date=datetime(2021, 10, 29, 18),
-    schedule_interval="*/1 * * * *",
+with DAG(
+    "tutorial",
     default_args=default_args,
-)
+    description="A simple tutorial DAG",
+    schedule_interval=timedelta(days=1),
+    start_date=datetime(2021, 1, 1),
+    catchup=False,
+    tags=["example"],
+) as dag:
+    t1 = BashOperator(
+        task_id="print_date",
+        bash_command="date",
+    )
 
-task_1 = BashOperator(
-    task_id="task_example_id_1",
-    bash_command='echo "This is a bash test 1"',
-    dag=dag,
-)
+    t2 = BashOperator(
+        task_id="sleep",
+        depends_on_past=False,
+        bash_command="sleep 5",
+        retries=3,
+    )
 
-task_2 = BashOperator(
-    task_id="task_example_id_2",
-    bash_command='echo "This is a bash test 2"',
-    dag=dag,
-)
-
-task_1 >> task_2
+    t1 >> t2
